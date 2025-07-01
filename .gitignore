@@ -2,3 +2,5 @@
 test
 train
 .idea
+__pycache__
+media/
