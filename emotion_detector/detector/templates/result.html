@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Результат анализа эмоций</title>
+    <style>
+        .image-container {
+            display: flex;
+            gap: 30px;
+            margin-bottom: 20px;
+        }
+        .image-box {
+            border: 1px solid #ddd;
+            padding: 10px;
+            border-radius: 5px;
+        }
+        .emotions-list {
+            margin-top: 20px;
+            padding: 15px;
+            background-color: #f8f9fa;
+            border-radius: 5px;
+        }
+        .emotion-item {
+            margin-bottom: 8px;
+            padding: 8px;
+            background-color: #e9ecef;
+            border-radius: 4px;
+        }
+        .new-image-btn {
+            margin-top: 20px;
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <h1>Результат анализа эмоций</h1>
+
+    <div class="image-container">
+        <div class="image-box">
+            <h3>Оригинальное изображение</h3>
+            <img src="{{ original_image }}" style="max-width: 500px;">
+        </div>
+        <div class="image-box">
+            <h3>Обработанное изображение</h3>
+            <img src="{{ processed_image }}" style="max-width: 500px;">
+        </div>
+    </div>
+
+    <div class="emotions-list">
+        <h3>Обнаруженные эмоции:</h3>
+        {% for emotion in emotions %}
+        <div class="emotion-item">
+            Эмоция: <strong>{{ emotion.emotion }}</strong> (Точность: {{ emotion.confidence|floatformat:2 }}%)
+        </div>
+        {% endfor %}
+    </div>
+
+    <a href="/">
+        <button class="new-image-btn">Загрузить новое изображение</button>
+    </a>
+</body>
+</html>
